@@ -22,14 +22,27 @@ namespace Multi2048
         Thread a;
         private void Form1_Load(object sender, EventArgs e)
         {
-            socketUniversal.MyEvent2 += (Char s, int x, int y, int v) => dvig.Set(s, x, y, v);//подписка на вызов метода
-            socketUniversal.MyEvent += (String s) => status(s);//подписка на статус
+            socketUniversal.MyEvent2 += (Char s, int x, int y, int v) =>
+            {
+                dvig.Set(s, x, y, v);
+            };//подписка на вызов метода
+            socketUniversal.MyEvent += (String s) =>
+            {
+                status(s);
+            };//подписка на статус
             a = new Thread(socketUniversal.run);
             a.Start();//запуск чтения сокета
+            KeyUp += (object sendere, KeyEventArgs ee) => {
+                //подписка на клаву
+            };
         }
         public void status(String s)
         {
-
         }
+
+
+
+
+
     }
 }
