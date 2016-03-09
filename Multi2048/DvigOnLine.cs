@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Multi2048
 {
-    class DvigOnLine
+    class DvigOnLine : Motion
     {
-        String s = "";
-        public void Set(Char s, int x, int y, int v)
+        int scope = 0;
+        public override int[,] UpdateLine(Char s, int x, int y, int v, int[,] mas)
         {
+            if (scopeGame != null) 
+            scopeGame(scope++);
+            return mas; 
         }
-        public String Get()
+        public override int[,] UpdateKey(object sendere, KeyEventArgs ee, int[,] mas)
         {
-            return s;
+            if (scopeGame != null) 
+            scopeGame(scope++);
+            return mas;
         }
     }
 }
