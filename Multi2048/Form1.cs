@@ -81,9 +81,12 @@ namespace Multi2048
                 if(i==20)
                 gamePanel1.SetDvig(new DvigStop());
             };
+            timer1.Start();
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
         {
+            label1.Text = t + "";
         }
 
           
