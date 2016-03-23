@@ -9,6 +9,7 @@ namespace Multi2048
 {
     class GamePanel : DataGridView
     {
+        public InfoGame infoPanel;
         public void init()
         {
             Columns.Add("dsf", "sdf");
@@ -31,6 +32,7 @@ namespace Multi2048
             AllowUserToResizeRows = false;
             AllowUserToAddRows = false;
             MultiSelect = false;
+            Size = new System.Drawing.Size(243, 243);
         }
 
         int[,] mas = new int[,] { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
@@ -40,6 +42,7 @@ namespace Multi2048
         {
             if (dvig != null)
                 mas = dvig.UpdateKey(sendere, ee, mas);
+            infoPanel('p', 0, 0, 2);//сообщение направления и координаты с появившейся цифрой
         }
         public void UpdateLine(Char s, int x, int y, int v)
         {

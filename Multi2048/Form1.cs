@@ -47,7 +47,6 @@ namespace Multi2048
             gamePanel1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gamePanel1.Location = new System.Drawing.Point(269, 73);
             gamePanel1.Name = "gamePanel1";
-            gamePanel1.Size = new System.Drawing.Size(243, 243);
             gamePanel1.TabIndex = 3;
             Controls.Add(gamePanel1);
             ((System.ComponentModel.ISupportInitialize)(gamePanel1)).EndInit();
@@ -56,8 +55,11 @@ namespace Multi2048
         {
             a = new Thread(socketUniversal.run);
             a.Start();//запуск чтения сокета
-            
-            
+
+            gamePanel1.infoPanel += (Char s, int x, int y, int v) =>
+            {
+                socketUniversal.write("sdfsdf");//сообщение состояния панели соперника
+            };
             socketUniversal.MyEvent += (String s) =>
             {
                 status(s);

@@ -32,6 +32,9 @@ namespace Multi2048
                 Thread.Sleep(1000);
             }
         }
+        public void write(String s)
+        {
+        }
 
 
     }
