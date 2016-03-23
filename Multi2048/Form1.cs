@@ -40,6 +40,7 @@ namespace Multi2048
         {
             socketUniversal = new SocketUniversal();
             gamePanel1 = new GamePanel();
+            gamePanel1.init();
             gamePanel1.SetDvig(new DvigOnLine());
             
             ((System.ComponentModel.ISupportInitialize)(gamePanel1)).BeginInit();
@@ -81,7 +82,7 @@ namespace Multi2048
                 if(i==20)
                 gamePanel1.SetDvig(new DvigStop());
             };
-            timer1.Start();
+            timer1.Start(); 
         }
 
         private void timer1_Tick(object sender, EventArgs e)

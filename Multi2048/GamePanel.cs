@@ -9,6 +9,35 @@ namespace Multi2048
 {
     class GamePanel : DataGridView
     {
+        public void init()
+        {
+            Columns.Add("dsf", "sdf");
+            Columns.Add("dsf", "sdf");
+            Columns.Add("dsf", "sdf");
+            Columns.Add("dsf", "sdf");
+            Rows.Add();
+            Rows.Add();
+            Rows.Add();
+            Rows.Add();
+            ColumnHeadersVisible = false;
+            RowHeadersVisible = false;
+            ReadOnly = true;
+            Columns[0].Width = 40;
+            Columns[1].Width = 40;
+            Columns[2].Width = 40;
+            Columns[3].Width = 40;
+            Rows[0].Height = 40;
+            Rows[1].Height = 40;
+            Rows[2].Height = 40;
+            Rows[3].Height = 40;
+            AllowUserToResizeColumns = false;
+            AllowUserToResizeRows = false;
+            AllowUserToAddRows = false;
+            MultiSelect=false;
+
+
+        }
+
         int[,] mas = new int[,] { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
         Motion dvig;
         public ScoreGame scopeGame;
