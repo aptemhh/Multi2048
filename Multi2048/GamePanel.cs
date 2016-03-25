@@ -60,10 +60,11 @@ namespace Multi2048
 
         public void UpdateKey(object sendere, KeyEventArgs ee)
         {
-            MasToGrid();
+            
             if (dvig != null)
                 mas = dvig.UpdateKey(sendere, ee, mas);
             infoPanel('p', 0, 0, 2);//сообщение направления и координаты с появившейся цифрой
+            MasToGrid();
         }
 
         public void UpdateLine(Char s, int x, int y, int v)

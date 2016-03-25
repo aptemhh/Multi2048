@@ -41,7 +41,7 @@ namespace Multi2048
             socketUniversal = new SocketUniversal();
             gamePanel1 = new GamePanel();
             gamePanel1.init();
-            gamePanel1.SetDvig(new DvigOnLine());
+            gamePanel1.SetDvig(new DvigWASD());
             
             ((System.ComponentModel.ISupportInitialize)(gamePanel1)).BeginInit();
             gamePanel1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

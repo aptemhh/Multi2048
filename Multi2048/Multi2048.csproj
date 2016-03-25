@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="DvigOnLine.cs" />
     <Compile Include="DvigStop.cs" />
+    <Compile Include="DvigWASD.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
