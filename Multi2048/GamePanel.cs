@@ -33,22 +33,45 @@ namespace Multi2048
             AllowUserToAddRows = false;
             MultiSelect = false;
             Size = new System.Drawing.Size(243, 243);
+            mas = GameStart();
+            MasToGrid();
+            this.SelectionChanged += (object sender, EventArgs e) =>
+            {
+                try
+                {
+                    SelectedCells[0].Selected = false;
+                }
+                catch (Exception er)
+                {
+                }
+            };
         }
 
-        int[,] mas = new int[,] { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+        public int[,] mas = new int[,] { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
         Motion dvig;
         public ScoreGame scopeGame;
+
+        public void MasToGrid()
+        {
+            for (int i = 0; i < this.RowCount; i++)
+                for (int j = 0; j < this.ColumnCount; j++)
+                    this[i, j].Value = mas[i, j];
+        }
+
         public void UpdateKey(object sendere, KeyEventArgs ee)
         {
+            MasToGrid();
             if (dvig != null)
                 mas = dvig.UpdateKey(sendere, ee, mas);
             infoPanel('p', 0, 0, 2);//сообщение направления и координаты с появившейся цифрой
         }
+
         public void UpdateLine(Char s, int x, int y, int v)
         {
             if (dvig != null)
                 mas = dvig.UpdateLine(s, x, y, v, mas);
         }
+
         public void SetDvig(Motion _dvig)
         {
             dvig = _dvig;
@@ -57,6 +80,55 @@ namespace Multi2048
                 scopeGame(i); 
             };
         }
+        Random rnd = new Random();
 
+        public int[,] GameStart()
+        {
+            int[,] mas=new int[4,4];
+            int x, y, cntgen = 0;
+            for (; ; )
+            {
+                
+                x = rnd.Next(0, 4);
+                y = rnd.Next(0, 4);
+                if (mas[x, y] == 0)
+                {
+                    mas[x, y] = rnd.Next(0, 100) < 90 ? 2 : 4;
+                    cntgen++;
+                }
+                else
+                {
+                    x = 0;
+                    y = 0;
+                    continue;
+                }
+                if (cntgen == 2) break;
+            }
+            return mas;
+        }
+
+
+
+        public int[,] NewTile(int[,] mas)
+        {
+            for (; ; )
+            {
+                int x, y;
+                x = rnd.Next(0, 4);
+                y = rnd.Next(0, 4);
+                if (mas[x, y] == 0)
+                {
+                    mas[x, y] = rnd.Next(0, 100) < 90 ? 2 : 4;
+                    break;
+                }
+                else
+                {
+                    x = 0;
+                    y = 0;
+                    continue;
+                }
+            }
+            return mas;
+        }
     }
 }

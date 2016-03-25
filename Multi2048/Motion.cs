@@ -13,5 +13,7 @@ namespace Multi2048
         public ScoreGame scopeGame;
         public abstract int[,] UpdateLine(Char s, int x, int y, int v, int[,] mas);
         public abstract int[,] UpdateKey(object sendere, KeyEventArgs ee, int[,] mas);
+
+
     }
 }
