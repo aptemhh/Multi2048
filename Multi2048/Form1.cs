@@ -12,6 +12,7 @@ using System.Windows.Forms;
 namespace Multi2048
 {
     public delegate void ScoreGame(int count);//подписка на счет
+    public delegate void StateGame(String s);//подписка на счет
     public partial class Form1 : Form
     {
         public Form1()
@@ -80,9 +81,14 @@ namespace Multi2048
 
             gamePanel1.scopeGame += (int i) =>
             {
-                t = i;
-                if(i==20)
-                gamePanel1.SetDvig(new DvigStop());
+                t +=i;
+            };
+            gamePanel1.stateGame += (String s) =>
+            {
+                if (s.Equals("DID 2048"))
+                {
+                    gamePanel1.SetDvig(new DvigStop());
+                }
             };
             timer1.Start(); 
         }

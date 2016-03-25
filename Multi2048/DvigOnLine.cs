@@ -10,19 +10,19 @@ namespace Multi2048
     class DvigOnLine : Motion
     {
         int scope = 0;
-        public override int[,] UpdateLine(Char s, int x, int y, int v, int[,] mas)
+        public override void UpdateLine(Char s, int x, int y, int v, int[,] mas)
         {
-            return mas; 
+             
         }
-        public override int[,] UpdateKey(object sendere, KeyEventArgs ee, int[,] mas)
+        public override void UpdateKey(object sendere, KeyEventArgs ee, int[,] mas)
         {
             if (ee.KeyData == Keys.W)
             {
-                
+
             }
-            if (scopeGame != null) 
-            scopeGame(scope++);
-            return mas;
+            if (scopeGame != null)
+                scopeGame(scope++);
+            
         }
     }
 }

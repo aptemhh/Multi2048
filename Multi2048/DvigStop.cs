@@ -10,15 +10,15 @@ namespace Multi2048
     class DvigStop : Motion
     {
 
-        public override int[,] UpdateLine(Char s, int x, int y, int v, int[,] mas)
+        public override void UpdateLine(Char s, int x, int y, int v, int[,] mas)
         {
 
-            return mas;
+            
         }
-        public override int[,] UpdateKey(object sendere, KeyEventArgs ee, int[,] mas)
+        public override void UpdateKey(object sendere, KeyEventArgs ee, int[,] mas)
         {
 
-            return mas;
+            
         }
     }
 }
