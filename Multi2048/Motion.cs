@@ -16,16 +16,16 @@ namespace Multi2048
         Random rnd = new Random();
         public void NewTile(int[,] mas)
         {
-            int cntr=0;
+            int cntr = 0;
 
             for (int i = 0; i < 4; i++)
                 for (int j = 0; j < 4; j++)
                     if (mas[i, j] == 0)
                         cntr++;
-            
-            for (int n=cntr;cntr>0&&((cntr-n)<3)&&n>0 ; )
+
+            for (int n = cntr; cntr > 0 && ((cntr - n) < 3) && n > 0; )
             {
-                
+
                 int x, y;
                 x = rnd.Next(0, 4);
                 y = rnd.Next(0, 4);
@@ -122,7 +122,7 @@ namespace Multi2048
                             int v1, v2;
                             v1 = mas[i, j];
                             v2 = mas[i, j - 1];
-                            if (v1 == v2&&v1!=0)
+                            if (v1 == v2 && v1 != 0)
                             {
                                 v1 = 2 * v2;
                                 scopeGame(v1);
@@ -173,6 +173,21 @@ namespace Multi2048
 
                     break;
             }
+        }
+        public void DO(string a, int[,] mas)
+        {
+            int[,] masOld = (int[,])mas.Clone();
+            MoveTile(a, mas);
+            StackTile(a, mas);
+            for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 4; j++)
+                {
+                    if (mas[i, j] != masOld[i, j])
+                    {
+                        NewTile(mas);
+                        return;
+                    }
+                }
         }
         /*
         void MoveAvailableLeft(int[,] mas)

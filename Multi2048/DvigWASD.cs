@@ -11,42 +11,25 @@ namespace Multi2048
     {
         public override void UpdateLine(Char s, int x, int y, int v, int[,] mas)
         {
-            
         }
         public override void UpdateKey(object sendere, KeyEventArgs ee, int[,] mas)
         {
-            int[,] masOld = (int[,])mas.Clone();
-
             if (ee.KeyData == Keys.W)
             {
-                MoveTile("up", mas);
-                StackTile("up", mas);
+                DO("up", mas);
             }
             if (ee.KeyData == Keys.A)
             {
-                MoveTile("left", mas);
-                StackTile("left", mas);
+                DO("left", mas);
             }
             if (ee.KeyData == Keys.S)
             {
-                MoveTile("down", mas);
-                StackTile("down", mas);
+                DO("down", mas);
             }
             if (ee.KeyData == Keys.D)
             {
-                MoveTile("right", mas);
-                StackTile("right", mas);
+                DO("right", mas);
             }
-            for(int i=0;i<4;i++)
-                for (int j = 0; j < 4; j++)
-                {
-                    if (mas[i, j] != masOld[i, j])
-                    {
-                        NewTile(mas);
-                        return;
-                    }
-                }
-           
         }
     }
 }
