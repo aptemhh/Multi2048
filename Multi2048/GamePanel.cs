@@ -12,10 +12,10 @@ namespace Multi2048
         public InfoGame infoPanel;
         public void init()
         {
-            Columns.Add("dsf", "sdf");
-            Columns.Add("dsf", "sdf");
-            Columns.Add("dsf", "sdf");
-            Columns.Add("dsf", "sdf");
+            Columns.Add("", "");
+            Columns.Add("", "");
+            Columns.Add("", "");
+            Columns.Add("", "");
             Rows.Add();
             Rows.Add();
             Rows.Add();
@@ -37,13 +37,8 @@ namespace Multi2048
             MasToGrid();
             this.SelectionChanged += (object sender, EventArgs e) =>
             {
-                try
-                {
+              if(SelectedCells[0]!=null)
                     SelectedCells[0].Selected = false;
-                }
-                catch (Exception er)
-                {
-                }
             };
         }
         public StateGame stateGame;
@@ -110,6 +105,8 @@ namespace Multi2048
             }
             return mas;
         }
+
+       
 
 
 
