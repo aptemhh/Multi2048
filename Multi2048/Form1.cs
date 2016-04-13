@@ -23,6 +23,7 @@ namespace Multi2048
        
         Thread a;
         GamePanel gamePanel1;
+        Label label;
         private void Form1_Load(object sender, EventArgs e)
         {
             init();
@@ -44,8 +45,13 @@ namespace Multi2048
             gamePanel1.init();
             gamePanel1.SetDvig(new DvigWASD());
             gamePanel1.Location = new System.Drawing.Point(269, 73);
-            Controls.Add(gamePanel1);
 
+            label = new Label();
+            label.Location = new System.Drawing.Point(10, 10);
+            label.Text = "0";
+            Controls.Add(label);
+
+            Controls.Add(gamePanel1);
         }
         public void subscribe()
         {
@@ -77,6 +83,7 @@ namespace Multi2048
             gamePanel1.scopeGame += (int i) =>
             {
                 t +=i;
+                label.Text = t+"";
             };
             gamePanel1.stateGame += (String s) =>
             {
@@ -85,13 +92,8 @@ namespace Multi2048
                     gamePanel1.SetDvig(new DvigStop());
                 }
             };
-            timer1.Start(); 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-           // label1.Text = t + "";
-        }
 
           
     }
