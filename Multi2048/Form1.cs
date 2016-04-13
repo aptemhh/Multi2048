@@ -43,14 +43,9 @@ namespace Multi2048
             gamePanel1 = new GamePanel();
             gamePanel1.init();
             gamePanel1.SetDvig(new DvigWASD());
-            
-            ((System.ComponentModel.ISupportInitialize)(gamePanel1)).BeginInit();
-            gamePanel1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gamePanel1.Location = new System.Drawing.Point(269, 73);
-            gamePanel1.Name = "gamePanel1";
-            gamePanel1.TabIndex = 3;
             Controls.Add(gamePanel1);
-            ((System.ComponentModel.ISupportInitialize)(gamePanel1)).EndInit();
+
         }
         public void subscribe()
         {
@@ -95,7 +90,7 @@ namespace Multi2048
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = t + "";
+           // label1.Text = t + "";
         }
 
           
