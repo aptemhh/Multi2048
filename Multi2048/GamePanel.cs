@@ -12,30 +12,16 @@ namespace Multi2048
         public InfoGame infoPanel;
         public void init()
         {
-            Columns.Add("", "");
-            Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Columns.Add("", "");
-            Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Columns.Add("", "");
-            Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Columns.Add("", "");
-            Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            Rows.Add();
-            Rows.Add();
-            Rows.Add();
-            Rows.Add();
-            ColumnHeadersVisible = false;
-            RowHeadersVisible = false;
-            ReadOnly = true;
             for (int i = 0; i < 4; i++)
             {
+                Columns.Add("", "");
+                Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Rows.Add();
                 Columns[i].Width = 60;
                 Rows[i].Height = 60;
             }
-            AllowUserToResizeColumns = false;
-            AllowUserToResizeRows = false;
-            AllowUserToAddRows = false;
-            MultiSelect = false;
+            ColumnHeadersVisible = RowHeadersVisible = AllowUserToResizeColumns = AllowUserToResizeRows = AllowUserToAddRows = MultiSelect = false;
+            ReadOnly = true;
             Size = new System.Drawing.Size(243, 243);
             mas = GameStart();
             MasToGrid();
@@ -65,7 +51,6 @@ namespace Multi2048
 
         public void UpdateKey(object sendere, KeyEventArgs ee)
         {
-            
             if (dvig != null)
                dvig.UpdateKey(sendere, ee, mas);
             infoPanel('p', 0, 0, 2);//сообщение направления и координаты с появившейся цифрой
@@ -74,8 +59,8 @@ namespace Multi2048
 
         public void UpdateLine(Char s, int x, int y, int v)
         {
-           // if (dvig != null)
-                //dvig.UpdateLine(s, x, y, v, mas);
+            if (dvig != null)
+                dvig.UpdateLine(s, x, y, v, mas);
         }
 
         public void SetDvig(Motion _dvig)
@@ -92,9 +77,8 @@ namespace Multi2048
         {
             int[,] mas=new int[4,4];
             int x, y, cntgen = 0;
-            for (; ; )
-            {
-                
+            for (;;)
+            {   
                 x = rnd.Next(0, 4);
                 y = rnd.Next(0, 4);
                 if (mas[x, y] == 0)
