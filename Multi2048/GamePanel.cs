@@ -37,13 +37,9 @@ namespace Multi2048
             MasToGrid();
             this.SelectionChanged += (object sender, EventArgs e) =>
             {
-                try
-                {
-                    SelectedCells[0].Selected = false;
-                }
-                catch (Exception er)
-                {
-                }
+                if (SelectedCells.Count > 0)
+                    if (SelectedCells[0] != null)
+                        SelectedCells[0].Selected = false;
             };
         }
         public StateGame stateGame;
@@ -56,7 +52,9 @@ namespace Multi2048
             for (int i = 0; i < this.RowCount; i++)
                 for (int j = 0; j < this.ColumnCount; j++)
                 {
-                    this[i, j].Value = mas[i, j];
+                    if (mas[i, j] != 0)
+                        this[i, j].Value = mas[i, j];
+                    else this[i, j].Value = "";
                     if (mas[i, j] >= 2048) stateGame("DID 2048");
                 }
         }
@@ -110,10 +108,5 @@ namespace Multi2048
             }
             return mas;
         }
-
-
-
-
-
     }
 }
