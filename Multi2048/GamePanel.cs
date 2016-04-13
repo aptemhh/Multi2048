@@ -12,10 +12,14 @@ namespace Multi2048
         public InfoGame infoPanel;
         public void init()
         {
-            Columns.Add("dsf", "sdf");
-            Columns.Add("dsf", "sdf");
-            Columns.Add("dsf", "sdf");
-            Columns.Add("dsf", "sdf");
+            Columns.Add("", "");
+            Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Columns.Add("", "");
+            Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Columns.Add("", "");
+            Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Columns.Add("", "");
+            Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Rows.Add();
             Rows.Add();
             Rows.Add();
