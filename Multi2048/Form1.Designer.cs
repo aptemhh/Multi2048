@@ -1,6 +1,9 @@
 ﻿namespace Multi2048
 {
-    partial class Form1
+    /// <summary>
+    /// partial class Form1
+    /// </summary>
+    public partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -13,10 +16,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -41,11 +45,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
-
         }
-
         #endregion
-
     }
 }
-
