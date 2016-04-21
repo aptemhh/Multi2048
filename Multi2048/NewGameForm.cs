@@ -17,11 +17,16 @@ namespace Multi2048
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SingleStartButton_Click(object sender, EventArgs e)
         {
-            Form1 gameForm = new Form1();
-            gameForm.Show();
-            this.Close();
+            
+        }
+
+        private void MultiplayerButton_Click(object sender, EventArgs e)
+        {
+            MultiplayerWindow mpWindow = new MultiplayerWindow();
+            mpWindow.Show();
+            this.Hide();
         }
     }
 }

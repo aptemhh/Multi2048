@@ -55,6 +55,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MultiplayerWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MultiplayerWindow.Designer.cs">
+      <DependentUpon>MultiplayerWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewGameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     <Compile Include="SocketUniversal.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultiplayerWindow.resx">
+      <DependentUpon>MultiplayerWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewGameForm.resx">
       <DependentUpon>NewGameForm.cs</DependentUpon>

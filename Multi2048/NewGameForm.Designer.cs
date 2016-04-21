@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.SingleStartButton = new System.Windows.Forms.Button();
             this.MultiplayerButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // SingleStartButton
             // 
-            this.button1.Location = new System.Drawing.Point(13, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 25);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Одиночная игра";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SingleStartButton.Location = new System.Drawing.Point(13, 66);
+            this.SingleStartButton.Name = "SingleStartButton";
+            this.SingleStartButton.Size = new System.Drawing.Size(250, 25);
+            this.SingleStartButton.TabIndex = 0;
+            this.SingleStartButton.Text = "Одиночная игра";
+            this.SingleStartButton.UseVisualStyleBackColor = true;
+            this.SingleStartButton.Click += new System.EventHandler(this.SingleStartButton_Click);
             // 
             // MultiplayerButton
             // 
@@ -50,6 +50,7 @@
             this.MultiplayerButton.TabIndex = 1;
             this.MultiplayerButton.Text = "Мультиплеер";
             this.MultiplayerButton.UseVisualStyleBackColor = true;
+            this.MultiplayerButton.Click += new System.EventHandler(this.MultiplayerButton_Click);
             // 
             // NewGame_Form
             // 
@@ -57,7 +58,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.MultiplayerButton);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SingleStartButton);
             this.Name = "NewGame_Form";
             this.Text = "Новая игра";
             this.ResumeLayout(false);
@@ -66,7 +67,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button SingleStartButton;
         private System.Windows.Forms.Button MultiplayerButton;
     }
 }
