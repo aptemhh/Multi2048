@@ -42,6 +42,11 @@ namespace Multi2048
         private GamePanel gamePanel1;
 
         /// <summary>
+        /// The second game pad
+        /// </summary>
+        private GamePanel gamePanel2;
+
+        /// <summary>
         /// The object for the network information
         /// </summary>
         private SocketUniversal socketUniversal;
@@ -54,12 +59,22 @@ namespace Multi2048
         /// <summary>
         /// Caption account
         /// </summary>
-        private Label label;
+        private Label player1_label;
+
+        /// <summary>
+        /// Caption for second account
+        /// </summary>
+        private Label player2_label;
 
         /// <summary>
         /// Counter account
         /// </summary>
-        private int t = 0;
+        private int cntP1 = 0;
+
+        /// <summary>
+        /// Counter account
+        /// </summary>
+        private int cntP2 = 0;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Form1"/> class.
@@ -79,12 +94,25 @@ namespace Multi2048
             this.gamePanel1 = new GamePanel();
             this.gamePanel1.Init();
             this.gamePanel1.SetDvig(new DvigWASD());
-            this.gamePanel1.Location = new System.Drawing.Point(128, 73);
-            this.label = new Label();
-            this.label.Location = new System.Drawing.Point(245, 10);
-            this.label.Text = "0";
-            this.Controls.Add(this.label);
+            this.gamePanel1.Location = new System.Drawing.Point(50, 73);
+            this.player1_label = new Label();
+            this.player1_label.Location = new System.Drawing.Point(166, 10);
+            this.player1_label.Text = "0";
+            this.Controls.Add(this.player1_label);
             this.Controls.Add(this.gamePanel1);
+
+            if (this.Text == "Игра за одним компьютером")
+            {
+                this.gamePanel2 = new GamePanel();
+                this.gamePanel2.Init();
+                this.gamePanel2.SetDvig(new DvigWASD());
+                this.gamePanel2.Location = new System.Drawing.Point(350, 73);
+                this.player2_label = new Label();
+                this.player2_label.Location = new System.Drawing.Point(466, 10);
+                this.player2_label.Text = "0";
+                this.Controls.Add(this.player2_label);
+                this.Controls.Add(this.gamePanel2);
+            }
         }
 
         /// <summary>
@@ -114,14 +142,26 @@ namespace Multi2048
             };
             this.gamePanel1.ScopeGame = (int i) =>
             {
-                this.t += i;
-                this.label.Text = t.ToString();
+                this.cntP1 += i;
+                this.player1_label.Text = cntP1.ToString();
             };
             this.gamePanel1.StateGame = (string s) =>
             {
                 if (s.Equals("DID 2048"))
                 {
                     this.gamePanel1.SetDvig(new DvigStop());
+                }
+            };
+            this.gamePanel2.ScopeGame = (int i) =>
+            {
+                this.cntP2 += i;
+                this.player1_label.Text = cntP2.ToString();
+            };
+            this.gamePanel2.StateGame = (string s) =>
+            {
+                if (s.Equals("DID 2048"))
+                {
+                    this.gamePanel2.SetDvig(new DvigStop());
                 }
             };
         }

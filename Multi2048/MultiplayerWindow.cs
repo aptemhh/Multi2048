@@ -16,5 +16,14 @@ namespace Multi2048
         {
             InitializeComponent();
         }
+
+        private void StartLocal_Click(object sender, EventArgs e)
+        {
+            Form1 gameForm = new Form1();
+            gameForm.Size = new System.Drawing.Size(800, 400);
+            gameForm.Text = "Игра за одним компьютером";
+            gameForm.Show();
+            this.Close();
+        }
     }
 }

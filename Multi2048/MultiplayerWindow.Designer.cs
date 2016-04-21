@@ -40,6 +40,7 @@
             this.StartLocal.TabIndex = 0;
             this.StartLocal.Text = "За одним компьютером";
             this.StartLocal.UseVisualStyleBackColor = true;
+            this.StartLocal.Click += new System.EventHandler(this.StartLocal_Click);
             // 
             // StartOnLine
             // 
