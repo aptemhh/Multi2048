@@ -55,8 +55,20 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewGameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewGameForm.Designer.cs">
+      <DependentUpon>NewGameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GamePanel.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MainMenu_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu_Form.Designer.cs">
+      <DependentUpon>MainMenu_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Motion.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
@@ -66,6 +78,12 @@
     <Compile Include="SocketUniversal.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewGameForm.resx">
+      <DependentUpon>NewGameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu_Form.resx">
+      <DependentUpon>MainMenu_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
