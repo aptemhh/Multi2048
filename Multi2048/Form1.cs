@@ -74,13 +74,14 @@ namespace Multi2048
         /// </summary>
         public void Init()
         {
+            
             this.socketUniversal = new SocketUniversal();
             this.gamePanel1 = new GamePanel();
             this.gamePanel1.Init();
             this.gamePanel1.SetDvig(new DvigWASD());
-            this.gamePanel1.Location = new System.Drawing.Point(269, 73);
+            this.gamePanel1.Location = new System.Drawing.Point(128, 73);
             this.label = new Label();
-            this.label.Location = new System.Drawing.Point(10, 10);
+            this.label.Location = new System.Drawing.Point(245, 10);
             this.label.Text = "0";
             this.Controls.Add(this.label);
             this.Controls.Add(this.gamePanel1);

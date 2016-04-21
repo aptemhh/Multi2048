@@ -19,7 +19,11 @@ namespace Multi2048
 
         private void SingleStartButton_Click(object sender, EventArgs e)
         {
-            
+            Form1 gameForm = new Form1();
+            gameForm.Size = new System.Drawing.Size(500, 400);
+            gameForm.Text = "Одиночная игра";
+            gameForm.Show();
+            this.Close();
         }
 
         private void MultiplayerButton_Click(object sender, EventArgs e)
