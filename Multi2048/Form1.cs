@@ -105,7 +105,7 @@ namespace Multi2048
             {
                 this.gamePanel2 = new GamePanel();
                 this.gamePanel2.Init();
-                this.gamePanel2.SetDvig(new DvigWASD());
+                this.gamePanel2.SetDvig(new DvigNumPad());
                 this.gamePanel2.Location = new System.Drawing.Point(350, 73);
                 this.player2_label = new Label();
                 this.player2_label.Location = new System.Drawing.Point(466, 10);
@@ -150,18 +150,6 @@ namespace Multi2048
                 if (s.Equals("DID 2048"))
                 {
                     this.gamePanel1.SetDvig(new DvigStop());
-                }
-            };
-            this.gamePanel2.ScopeGame = (int i) =>
-            {
-                this.cntP2 += i;
-                this.player1_label.Text = cntP2.ToString();
-            };
-            this.gamePanel2.StateGame = (string s) =>
-            {
-                if (s.Equals("DID 2048"))
-                {
-                    this.gamePanel2.SetDvig(new DvigStop());
                 }
             };
         }

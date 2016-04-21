@@ -36,9 +36,14 @@ namespace Multi2048
         private InfoGame infoPanel;
 
         /// <summary>
-        /// Panel array
+        /// Panel array for player 1
         /// </summary>
         private int[,] mas = new int[,] { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+
+        /// <summary>
+        /// Panel array for player 2
+        /// </summary>
+        private int[,] mas2 = new int[,] { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
 
         /// <summary>
         /// Delegate game status
