@@ -77,6 +77,11 @@ namespace Multi2048
         private int cntP2 = 0;
 
         /// <summary>
+        /// Control TB for player 1
+        /// </summary>
+        private TextBox P1TextBox;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Form1"/> class.
         /// </summary>
         public Form1()
@@ -94,12 +99,19 @@ namespace Multi2048
             this.gamePanel1 = new GamePanel();
             this.gamePanel1.Init();
             this.gamePanel1.SetDvig(new DvigWASD());
+            this.P1TextBox = new TextBox();
             this.gamePanel1.Location = new System.Drawing.Point(50, 73);
             this.player1_label = new Label();
             this.player1_label.Location = new System.Drawing.Point(166, 10);
             this.player1_label.Text = "0";
+            this.P1TextBox.ReadOnly = true;
+            this.P1TextBox.Location = new System.Drawing.Point(50, 330);
+            this.P1TextBox.Size = new System.Drawing.Size(243, 22);
+            this.P1TextBox.TextAlign = HorizontalAlignment.Center;
+            this.P1TextBox.Text = "Игра запущена.";
             this.Controls.Add(this.player1_label);
             this.Controls.Add(this.gamePanel1);
+            this.Controls.Add(this.P1TextBox);
 
             if (this.Text == "Игра за одним компьютером")
             {
@@ -150,6 +162,7 @@ namespace Multi2048
                 if (s.Equals("DID 2048"))
                 {
                     this.gamePanel1.SetDvig(new DvigStop());
+                    this.P1TextBox.Text = "Фишка 2048 получена, игра завершена!";
                 }
             };
         }
