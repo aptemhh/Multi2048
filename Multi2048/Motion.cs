@@ -361,7 +361,21 @@ namespace Multi2048
             int[,] masOld = (int[,])mas.Clone();
             this.MoveTile(a, mas);
             this.StackTile(a, mas);
-            this.NewTile(mas);
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (mas[i, j] != masOld[i, j])
+                    {
+                        this.NewTile(mas);
+                        if (MotionBlockerDown(mas) == false && MotionBlockerLeft(mas) == false && MotionBlockerRight(mas) == false && MotionBlockerUp(mas) == false)
+                        {
+                            this.scopeGame(-1);
+                        }
+                        return;
+                    }
+                }
+            }
         }
     }
 }

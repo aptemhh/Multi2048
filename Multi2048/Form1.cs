@@ -154,6 +154,12 @@ namespace Multi2048
             };
             this.gamePanel1.ScopeGame = (int i) =>
             {
+                if (i == -1)
+                {
+                    this.gamePanel1.SetDvig(new DvigStop());
+                    this.P1TextBox.Text = "Игра окончена: фишки не сдвинуть.";
+                    return;
+                }
                 this.cntP1 += i;
                 this.player1_label.Text = cntP1.ToString();
             };
@@ -162,7 +168,7 @@ namespace Multi2048
                 if (s.Equals("DID 2048"))
                 {
                     this.gamePanel1.SetDvig(new DvigStop());
-                    this.P1TextBox.Text = "Фишка 2048 получена, игра завершена!";
+                    this.P1TextBox.Text = "Игра завершена: получена фишка 2048";
                 }
             };
         }
