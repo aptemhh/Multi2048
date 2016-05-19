@@ -45,7 +45,6 @@
             // 
             // SettingsButton
             // 
-            this.SettingsButton.Enabled = false;
             this.SettingsButton.Location = new System.Drawing.Point(13, 105);
             this.SettingsButton.Name = "SettingsButton";
             this.SettingsButton.Size = new System.Drawing.Size(250, 25);

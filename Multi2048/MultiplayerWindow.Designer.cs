@@ -44,7 +44,6 @@
             // 
             // StartOnLine
             // 
-            this.StartOnLine.Enabled = false;
             this.StartOnLine.Location = new System.Drawing.Point(12, 140);
             this.StartOnLine.Name = "StartOnLine";
             this.StartOnLine.Size = new System.Drawing.Size(250, 25);
