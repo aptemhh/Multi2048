@@ -169,6 +169,7 @@ namespace Multi2048
                     break;
             }
         }
+       
 
         /// <summary>
         /// Merge chips
@@ -272,6 +273,84 @@ namespace Multi2048
             }
         }
 
+
+        /// <summary>
+        /// Checks ability to move left
+        /// </summary>
+        /// <param name="mas"></param>
+        /// <returns></returns>
+        public bool MotionBlockerLeft(int[,] mas)
+        {
+            int cnt = 0;
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 4; j++)
+                    if ((mas[i, j] != 0 && mas[i + 1, j] != mas[i, j]) || mas[i, j] == 0 && mas[i + 1, j] == 0)
+                        cnt++;
+            if (cnt == 12)
+            {
+                return false;
+            }
+            else return true;
+        }
+
+        /// <summary>
+        /// Checks ability to move right
+        /// </summary>
+        /// <param name="mas"></param>
+        /// <returns></returns>
+        public bool MotionBlockerRight(int[,] mas)
+        {
+            int cnt = 0;
+            for (int i = 3; i > 0; i--)
+                for (int j = 0; j < 4; j++)
+                    if ((mas[i, j] != 0 && mas[i - 1, j] != mas[i, j]) || mas[i, j] == 0 && mas[i - 1, j] == 0)
+                        cnt++;
+            if (cnt == 12)
+            {
+                return false;
+            }
+            else return true;
+        }
+
+        /// <summary>
+        /// Checks ability to move up
+        /// </summary>
+        /// <param name="mas"></param>
+        /// <returns></returns>
+        public bool MotionBlockerUp(int[,] mas)
+        {
+            int cnt = 0;
+            for (int j = 0; j < 3; j++)
+                for (int i = 0; i < 4; i++)
+                    if ((mas[i, j] != 0 && mas[i, j + 1] != mas[i, j]) || mas[i, j] == 0 && mas[i, j + 1] == 0)
+                        cnt++;
+            if (cnt == 12)
+            {
+                return false;
+            }
+            else return true;
+        }
+
+
+        /// <summary>
+        /// Checks ability to move down
+        /// </summary>
+        /// <param name="mas">Source array</param>
+        /// <returns></returns>
+        public bool MotionBlockerDown(int[,] mas)
+        {
+            int cnt = 0;
+            for (int j = 3; j > 0; j--)
+                for (int i = 0; i < 4; i++)
+                    if ((mas[i, j] != 0 && mas[i, j - 1] != mas[i, j]) || mas[i, j] == 0 && mas[i, j - 1] == 0)
+                        cnt++;
+            if (cnt == 12)
+            {
+                return false;
+            }
+            else return true;
+        }
+
         /// <summary>
         /// The logic of the merger and the move
         /// </summary>
@@ -282,17 +361,7 @@ namespace Multi2048
             int[,] masOld = (int[,])mas.Clone();
             this.MoveTile(a, mas);
             this.StackTile(a, mas);
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    if (mas[i, j] != masOld[i, j])
-                    {
-                        this.NewTile(mas);
-                        return;
-                    }
-                }
-            }
+            this.NewTile(mas);
         }
     }
 }
