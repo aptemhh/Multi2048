@@ -82,6 +82,11 @@ namespace Multi2048
         private TextBox P1TextBox;
 
         /// <summary>
+        /// Control TB for player 2
+        /// </summary>
+        private TextBox P2TextBox;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Form1"/> class.
         /// </summary>
         public Form1()
@@ -119,11 +124,18 @@ namespace Multi2048
                 this.gamePanel2.Init();
                 this.gamePanel2.SetDvig(new DvigNumPad());
                 this.gamePanel2.Location = new System.Drawing.Point(350, 73);
+                this.P2TextBox = new TextBox();
                 this.player2_label = new Label();
                 this.player2_label.Location = new System.Drawing.Point(466, 10);
                 this.player2_label.Text = "0";
+                this.P2TextBox.ReadOnly = true;
+                this.P2TextBox.Location = new System.Drawing.Point(350, 330);
+                this.P2TextBox.Size = new System.Drawing.Size(243, 22);
+                this.P2TextBox.TextAlign = HorizontalAlignment.Center;
+                this.P2TextBox.Text = "Игра запущена.";
                 this.Controls.Add(this.player2_label);
                 this.Controls.Add(this.gamePanel2);
+                this.Controls.Add(this.P2TextBox);
             }
         }
 
@@ -146,6 +158,8 @@ namespace Multi2048
                 if (ee.KeyCode != Keys.F11)
                 {
                     this.gamePanel1.UpdateKey(sendere, ee); // подписка на клавиатуру
+                    if (this.gamePanel2 != null)
+                        this.gamePanel2.UpdateKey(sendere, ee); // подписка на клавиатуру
                 }
             };
             this.socketUniversal.InfoGame = (char s, int x, int y, int v) =>
@@ -163,14 +177,38 @@ namespace Multi2048
                 this.cntP1 += i;
                 this.player1_label.Text = cntP1.ToString();
             };
+            if (this.gamePanel2 != null)
+                this.gamePanel2.ScopeGame = (int i) =>
+                {
+                    if (i == -1)
+                    {
+                        this.gamePanel2.SetDvig(new DvigStop());
+                        this.P2TextBox.Text = "Игра окончена: фишки не сдвинуть.";
+                        return;
+                    }
+                    this.cntP2 += i;
+                    this.player2_label.Text = cntP2.ToString();
+                };
             this.gamePanel1.StateGame = (string s) =>
             {
                 if (s.Equals("DID 2048"))
                 {
                     this.gamePanel1.SetDvig(new DvigStop());
-                    this.P1TextBox.Text = "Игра завершена: получена фишка 2048";
+                    if (this.gamePanel2 != null)
+                    {
+                        this.gamePanel2.SetDvig(new DvigStop());
+                    }
                 }
             };
+            if (this.gamePanel2 != null)
+                this.gamePanel2.StateGame = (string s) =>
+                {
+                    if (s.Equals("DID 2048"))
+                    {
+                        this.gamePanel1.SetDvig(new DvigStop());
+                        this.gamePanel2.SetDvig(new DvigStop());
+                    }
+                };
         }
 
         /// <summary>

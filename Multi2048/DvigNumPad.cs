@@ -40,22 +40,22 @@ namespace Multi2048
         /// <param name="mas">Source array</param>
         public override void UpdateKey(object sendere, KeyEventArgs ee, int[,] mas)
         {
-            if (ee.KeyData == Keys.NumPad8)
+            if (ee.KeyData == Keys.I)
             {
                 this.DO("up", mas);
             }
 
-            if (ee.KeyData == Keys.NumPad4)
+            if (ee.KeyData == Keys.J)
             {
                 this.DO("left", mas);
             }
 
-            if (ee.KeyData == Keys.NumPad2)
+            if (ee.KeyData == Keys.K)
             {
                 this.DO("down", mas);
             }
 
-            if (ee.KeyData == Keys.NumPad6)
+            if (ee.KeyData == Keys.L)
             {
                 this.DO("right", mas);
             }

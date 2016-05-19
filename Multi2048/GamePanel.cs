@@ -147,8 +147,10 @@ namespace Multi2048
             {
                 this.dvig.UpdateKey(sendere, ee, this.mas);
             }
-
-            this.infoPanel('p', 0, 0, 2); // сообщение направления и координаты с появившейся цифрой
+            if (this.infoPanel != null)
+            {
+                this.infoPanel('p', 0, 0, 2); // сообщение направления и координаты с появившейся цифрой
+            }
             this.MasToGrid();
         }
 
