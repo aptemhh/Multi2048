@@ -44,23 +44,22 @@ namespace Multi2048
             this.Close();
         }
 
-<<<<<<< HEAD
+
         private void StartOnLine_Click(object sender, EventArgs e)
         {
-            Connect Connect = null; 
-            if (Connect == null) 
-            { Connect = new Connect();
-                Connect.Show(); } 
+            Connect Connect = null;
+            if (Connect == null)
+            {
+                Connect = new Connect();
+                Connect.Show();
+            }
 
-=======
+        }
         /// <summary>
         /// Allows to start online game
         /// </summary>
         /// <param name="sender">The object on which clicked</param>
         /// <param name="e">Event argument</param>
-        private void StartOnLine_Click(object sender, EventArgs e)
-        {
->>>>>>> origin/Development
-        }
+
     }
 }

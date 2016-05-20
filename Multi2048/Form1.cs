@@ -77,16 +77,6 @@ namespace Multi2048
         private int cntP2 = 0;
 
         /// <summary>
-        /// Move counter in move limit mode for player 1
-        /// </summary>
-        private int moveCountP1 = 0;
-
-        /// <summary>
-        /// Move counter in move limit mode for player 1
-        /// </summary>
-        private int moveCountP2 = 0;
-
-        /// <summary>
         /// Control TB for player 1
         /// </summary>
         private TextBox P1TextBox;
@@ -95,16 +85,6 @@ namespace Multi2048
         /// Control TB for player 2
         /// </summary>
         private TextBox P2TextBox;
-
-        /// <summary>
-        /// TB for counting game type condition
-        /// </summary>
-        private Label TimerLabel;
-
-        /// <summary>
-        /// Timer
-        /// </summary>
-        private int t = 0;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Form1"/> class.
@@ -133,19 +113,12 @@ namespace Multi2048
             this.P1TextBox.Location = new System.Drawing.Point(50, 330);
             this.P1TextBox.Size = new System.Drawing.Size(243, 22);
             this.P1TextBox.TextAlign = HorizontalAlignment.Center;
-            if (this.Text == "Игра с ограниченным количеством ходов")
-            {
-                this.P1TextBox.Text = "Игра запущена. Сделано ходов: ";
-            }
-            else
-            {
-                this.P1TextBox.Text = "Игра запущена.";
-            }
+            this.P1TextBox.Text = "Игра запущена.";
             this.Controls.Add(this.player1_label);
             this.Controls.Add(this.gamePanel1);
             this.Controls.Add(this.P1TextBox);
 
-            if (this.Text == "Игра на время" || this.Text == "Игра с ограниченным количеством ходов")
+            if (this.Text == "Игра за одним компьютером")
             {
                 this.gamePanel2 = new GamePanel();
                 this.gamePanel2.Init();
@@ -159,14 +132,7 @@ namespace Multi2048
                 this.P2TextBox.Location = new System.Drawing.Point(350, 330);
                 this.P2TextBox.Size = new System.Drawing.Size(243, 22);
                 this.P2TextBox.TextAlign = HorizontalAlignment.Center;
-                if (this.Text == "Игра с ограниченным количеством ходов")
-                {
-                    this.P2TextBox.Text = "Игра запущена. Сделано ходов: ";
-                }
-                else
-                {
-                    this.P2TextBox.Text = "Игра запущена.";
-                }
+                this.P2TextBox.Text = "Игра запущена.";
                 this.Controls.Add(this.player2_label);
                 this.Controls.Add(this.gamePanel2);
                 this.Controls.Add(this.P2TextBox);
@@ -182,40 +148,19 @@ namespace Multi2048
             this.socketUniversalThread.Start(); // запуск чтения сокета
             this.gamePanel1.InfoPanel = (char s, int x, int y, int v) =>
             {
-                this.socketUniversal.Write("sdfsdf"); // сообщение состояния панели соперника
+                this.socketUniversal.Write("INFO" + s + ":" + x + ":" + y + ":" + v + ";"); // сообщение состояния панели соперника
             };
             this.socketUniversal.StatusGame = (string s) =>
             {
+                this.socketUniversal.Write("stat"+s+";");
             }; // подписка на статус
             this.KeyUp += (object sendere, KeyEventArgs ee) =>
             {
                 if (ee.KeyCode != Keys.F11)
                 {
                     this.gamePanel1.UpdateKey(sendere, ee); // подписка на клавиатуру
-                    if (this.Text == "Игра с ограниченным количеством ходов" && (ee.KeyCode == Keys.W || ee.KeyCode == Keys.S || ee.KeyCode == Keys.A || ee.KeyCode == Keys.D))
-                    {
-                        this.moveCountP1++;
-                        if (this.moveCountP1 == 120)
-                        {
-                            this.gamePanel1.SetDvig(new DvigStop());
-                            P1TextBox.Text = "Игра окочена: достигнут лимит ходов";
-                        }
-                        P1TextBox.Text = "Сделано ходов: " + this.moveCountP1;
-                    }
                     if (this.gamePanel2 != null)
-                    {
                         this.gamePanel2.UpdateKey(sendere, ee); // подписка на клавиатуру
-                        if (this.Text == "Игра с ограниченным количеством ходов" && (ee.KeyCode == Keys.I || ee.KeyCode == Keys.J || ee.KeyCode == Keys.K || ee.KeyCode == Keys.L))
-                        {
-                            this.moveCountP2++;
-                            if (this.moveCountP2 == 120)
-                            {
-                                this.gamePanel2.SetDvig(new DvigStop());
-                                P1TextBox.Text = "Игра окочена: достигнут лимит ходов";
-                            }
-                            P2TextBox.Text = "Сделано ходов: " + this.moveCountP2;
-                        }
-                    }
                 }
             };
             this.socketUniversal.InfoGame = (char s, int x, int y, int v) =>
@@ -265,16 +210,6 @@ namespace Multi2048
                         this.gamePanel2.SetDvig(new DvigStop());
                     }
                 };
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            TimerLabel.Text = t + "";
         }
 
         /// <summary>

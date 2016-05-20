@@ -48,15 +48,8 @@
             // 
             // startOnLine
             // 
-<<<<<<< HEAD
-            this.StartOnLine.Location = new System.Drawing.Point(12, 140);
-            this.StartOnLine.Name = "StartOnLine";
-            this.StartOnLine.Size = new System.Drawing.Size(250, 25);
-            this.StartOnLine.TabIndex = 1;
-            this.StartOnLine.Text = "По сети (недоступно в бете)";
-            this.StartOnLine.UseVisualStyleBackColor = true;
-            this.StartOnLine.Click += new System.EventHandler(this.StartOnLine_Click);
-=======
+
+
             this.startOnLine.Location = new System.Drawing.Point(12, 140);
             this.startOnLine.Name = "startOnLine";
             this.startOnLine.Size = new System.Drawing.Size(250, 25);
@@ -64,7 +57,7 @@
             this.startOnLine.Text = "По сети";
             this.startOnLine.UseVisualStyleBackColor = true;
             this.startOnLine.Click += new System.EventHandler(this.StartOnLine_Click);
->>>>>>> origin/Development
+
             // 
             // MultiplayerWindow
             // 

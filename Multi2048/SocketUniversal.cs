@@ -64,6 +64,7 @@ namespace Multi2048
             set { this.infoGame += value; }
         }
 
+        static NetworkStream socket;
         /// <summary>
         /// Stream that reads socket
         /// </summary>
@@ -75,9 +76,21 @@ namespace Multi2048
             tcpListener.Start();
 
 
-
+            String[] str;
+            if(socket!=null)
             for (;;)
             {
+                BinaryReader binR = new BinaryReader(socket);
+                String s=binR.ReadString();
+                String sr = s.Substring(0, 4);
+                if (sr.Equals("INFO"))
+                {
+                    s=s.Substring(4);
+                    str=s.Split(';');
+                    Char a=str[0][0];
+                    short x;
+                    Int16.TryParse(str[1],out x);
+                }
                 if (this.statusGame != null)
                 {
                     this.statusGame("статус");
@@ -87,31 +100,8 @@ namespace Multi2048
                 {
                     this.infoGame('R', 0, 0, 2);
                 }
-                Socket clientSocket = tcpListener.AcceptSocket();
- 
-                NetworkStream netStream = new NetworkStream(clientSocket);
-                BinaryWriter binWriter = new BinaryWriter(netStream);
-                string data = null;
-                byte[] bytes = new byte[1024];
-                int bytesRec = clientSocket.Receive(bytes);
-                
-                data = Encoding.UTF8.GetString(bytes, 0, bytesRec);
-                
-                string theReply1 = this.infoGame.ToString();
-                string theReply2 = this.StatusGame.ToString();
-                byte[] msg1 = Encoding.UTF8.GetBytes(theReply1);
-                byte[] msg2 = Encoding.UTF8.GetBytes(theReply2);
-                clientSocket.Send(msg1);
-                clientSocket.Send(msg2);
-                
-                clientSocket.Shutdown(SocketShutdown.Both);
-
- 
-                clientSocket.Close();
-
-
-
-                Thread.Sleep(1000);
+               
+               
             }
         }
 
@@ -120,6 +110,15 @@ namespace Multi2048
         /// </summary>
         /// <param name="s">Message to the socket</param>
         public void Write(string s)
+        {
+           // socket.Write(Encoding.UTF8.GetBytes(s));
+        }
+
+        public SocketUniversal(NetworkStream _socket)
+        {
+            socket = _socket;
+        }
+        public SocketUniversal()
         {
         }
     }

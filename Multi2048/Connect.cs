@@ -46,16 +46,7 @@ namespace Multi2048
 
             TcpClient serverSocket;
             serverSocket = new TcpClient("localhost", 65125);
-            NetworkStream netStream = serverSocket.GetStream();
-             BinaryWriter binW = new BinaryWriter(netStream);
-            BinaryReader binReader = new BinaryReader(netStream);
-            string message1 = this.statusGame.ToString();
-            string message2 = this.infoGame.ToString();
-
-            binW.Write(Encoding.UTF8.GetBytes(message1));
-            binW.Write(Encoding.UTF8.GetBytes(message2));
-
-            serverSocket.Close();
+            new SocketUniversal(serverSocket.GetStream());
  
 
 
