@@ -50,6 +50,7 @@
             this.StartOnLine.TabIndex = 1;
             this.StartOnLine.Text = "По сети (недоступно в бете)";
             this.StartOnLine.UseVisualStyleBackColor = true;
+            this.StartOnLine.Click += new System.EventHandler(this.StartOnLine_Click);
             // 
             // MultiplayerWindow
             // 

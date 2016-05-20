@@ -14,6 +14,9 @@ namespace Multi2048
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Net;
+    using System.Net.Sockets;
+    using System.IO;
 
     /// <summary>
     /// Subscribe to status
@@ -66,6 +69,13 @@ namespace Multi2048
         /// </summary>
         public void Run() // поток, который читает сокет
         {
+            IPHostEntry ipHost = Dns.GetHostEntry("127.0.0.1");
+            IPAddress ipAddr = ipHost.AddressList[0];
+            TcpListener tcpListener = new TcpListener(ipAddr, 65125);
+            tcpListener.Start();
+
+
+
             for (;;)
             {
                 if (this.statusGame != null)
@@ -77,6 +87,29 @@ namespace Multi2048
                 {
                     this.infoGame('R', 0, 0, 2);
                 }
+                Socket clientSocket = tcpListener.AcceptSocket();
+ 
+                NetworkStream netStream = new NetworkStream(clientSocket);
+                BinaryWriter binWriter = new BinaryWriter(netStream);
+                string data = null;
+                byte[] bytes = new byte[1024];
+                int bytesRec = clientSocket.Receive(bytes);
+                
+                data = Encoding.UTF8.GetString(bytes, 0, bytesRec);
+                
+                string theReply1 = this.infoGame.ToString();
+                string theReply2 = this.StatusGame.ToString();
+                byte[] msg1 = Encoding.UTF8.GetBytes(theReply1);
+                byte[] msg2 = Encoding.UTF8.GetBytes(theReply2);
+                clientSocket.Send(msg1);
+                clientSocket.Send(msg2);
+                
+                clientSocket.Shutdown(SocketShutdown.Both);
+
+ 
+                clientSocket.Close();
+
+
 
                 Thread.Sleep(1000);
             }

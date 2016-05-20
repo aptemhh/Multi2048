@@ -25,5 +25,14 @@ namespace Multi2048
             gameForm.Show();
             this.Close();
         }
+
+        private void StartOnLine_Click(object sender, EventArgs e)
+        {
+            Connect Connect = null; 
+            if (Connect == null) 
+            { Connect = new Connect();
+                Connect.Show(); } 
+
+        }
     }
 }
