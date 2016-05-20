@@ -72,6 +72,15 @@ namespace Multi2048
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public Motion getDvig()
+        {
+            return dvig;
+        }
+
+        /// <summary>
         /// Sets Installing the addition points of the game
         /// </summary>
         public ScoreGame ScopeGame

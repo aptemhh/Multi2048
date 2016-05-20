@@ -159,8 +159,35 @@ namespace Multi2048
                 if (ee.KeyCode != Keys.F11)
                 {
                     this.gamePanel1.UpdateKey(sendere, ee); // подписка на клавиатуру
+<<<<<<< HEAD
+=======
+                    if (this.Text == "Игра с ограниченным количеством ходов" && (ee.KeyCode == Keys.W || ee.KeyCode == Keys.S || ee.KeyCode == Keys.A || ee.KeyCode == Keys.D) && (!this.gamePanel1.getDvig().GetType().Name.Equals("DvigStop")))
+                    {
+                        this.moveCountP1++;
+                        if (this.moveCountP1 == 500)
+                        {
+                            this.gamePanel1.SetDvig(new DvigStop());
+                            P1TextBox.Text = "Игра окочена: достигнут лимит ходов";
+                        }
+                        P1TextBox.Text = "Сделано ходов: " + this.moveCountP1;
+                    }
+>>>>>>> origin/Development
                     if (this.gamePanel2 != null)
                         this.gamePanel2.UpdateKey(sendere, ee); // подписка на клавиатуру
+<<<<<<< HEAD
+=======
+                        if (this.Text == "Игра с ограниченным количеством ходов" && (ee.KeyCode == Keys.I || ee.KeyCode == Keys.J || ee.KeyCode == Keys.K || ee.KeyCode == Keys.L) && (!this.gamePanel2.getDvig().GetType().Name.Equals("DvigStop")))
+                        {
+                            this.moveCountP2++;
+                            if (this.moveCountP2 == 500)
+                            {
+                                this.gamePanel2.SetDvig(new DvigStop());
+                                P1TextBox.Text = "Игра окочена: достигнут лимит ходов";
+                            }
+                            P2TextBox.Text = "Сделано ходов: " + this.moveCountP2;
+                        }
+                    }
+>>>>>>> origin/Development
                 }
             };
             this.socketUniversal.InfoGame = (char s, int x, int y, int v) =>
