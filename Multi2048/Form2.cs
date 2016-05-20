@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MultiplayerWindow.cs" company="IVT-131">
+// <copyright file="Form2.cs" company="IVT-131">
 // Copyright (c) IVT-131. All rights reserved.
 // </copyright>
 // <author>Лобачев Андрей</author>
@@ -20,37 +20,44 @@ namespace Multi2048
     using System.Windows.Forms;
 
     /// <summary>
-    /// Form that allows to select multiplayer mode
+    /// Form that allows to change game type
     /// </summary>
-    public partial class MultiplayerWindow : Form
+    public partial class GameTypeForm : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MultiplayerWindow"/> class.
+        /// Initializes a new instance of the <see cref="GameTypeForm"/> class.
         /// </summary>
-        public MultiplayerWindow()
+        public GameTypeForm()
         {
             this.InitializeComponent();
         }
 
         /// <summary>
-        /// Allows to start local multiplayer game
+        /// Button that starts time mode
         /// </summary>
         /// <param name="sender">The object on which clicked</param>
         /// <param name="e">Event argument</param>
-        private void StartLocal_Click(object sender, EventArgs e)
+        private void TimeModeStart_Button_Click(object sender, EventArgs e)
         {
-            GameTypeForm gameTypeForm = new GameTypeForm();
-            gameTypeForm.Show();
+            Form1 gameForm = new Form1();
+            gameForm.Size = new System.Drawing.Size(660, 400);
+            gameForm.Text = "Игра на время";
+            gameForm.Show();
             this.Close();
         }
 
         /// <summary>
-        /// Allows to start online game
+        /// Button that starts move limit mode
         /// </summary>
         /// <param name="sender">The object on which clicked</param>
         /// <param name="e">Event argument</param>
-        private void StartOnLine_Click(object sender, EventArgs e)
+        private void MoveCountMode_Button_Click(object sender, EventArgs e)
         {
+            Form1 gameForm = new Form1();
+            gameForm.Size = new System.Drawing.Size(660, 400);
+            gameForm.Text = "Игра с ограниченным количеством ходов";
+            gameForm.Show();
+            this.Close();
         }
     }
 }
