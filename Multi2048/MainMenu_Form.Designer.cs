@@ -1,6 +1,9 @@
 ﻿namespace Multi2048
 {
-    partial class MainMenu_Form
+    /// <summary>
+    /// Main menu form
+    /// </summary>
+    public partial class MainMenuForm
     {
         /// <summary>
         /// Required designer variable.
@@ -13,10 +16,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -28,49 +32,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.NewGameButton = new System.Windows.Forms.Button();
-            this.SettingsButton = new System.Windows.Forms.Button();
-            this.HelpButton = new System.Windows.Forms.Button();
+            this.newGameButton = new System.Windows.Forms.Button();
+            this.ruleButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // NewGameButton
+            // newGameButton
             // 
-            this.NewGameButton.Location = new System.Drawing.Point(13, 70);
-            this.NewGameButton.Name = "NewGameButton";
-            this.NewGameButton.Size = new System.Drawing.Size(250, 25);
-            this.NewGameButton.TabIndex = 0;
-            this.NewGameButton.Text = "Новая игра";
-            this.NewGameButton.UseVisualStyleBackColor = true;
-            this.NewGameButton.Click += new System.EventHandler(this.NewGameButton_Click);
+            this.newGameButton.Location = new System.Drawing.Point(13, 70);
+            this.newGameButton.Name = "newGameButton";
+            this.newGameButton.Size = new System.Drawing.Size(250, 25);
+            this.newGameButton.TabIndex = 0;
+            this.newGameButton.Text = "Новая игра";
+            this.newGameButton.UseVisualStyleBackColor = true;
+            this.newGameButton.Click += new System.EventHandler(this.NewGameButton_Click);
             // 
-            // SettingsButton
+            // ruleButton
             // 
-            this.SettingsButton.Location = new System.Drawing.Point(13, 105);
-            this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(250, 25);
-            this.SettingsButton.TabIndex = 1;
-            this.SettingsButton.Text = "Настройки (недоступны в бете)";
-            this.SettingsButton.UseVisualStyleBackColor = true;
+            this.ruleButton.Location = new System.Drawing.Point(13, 140);
+            this.ruleButton.Name = "ruleButton";
+            this.ruleButton.Size = new System.Drawing.Size(250, 25);
+            this.ruleButton.TabIndex = 2;
+            this.ruleButton.Text = "Правила";
+            this.ruleButton.UseVisualStyleBackColor = true;
+            this.ruleButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
-            // HelpButton
-            // 
-            this.HelpButton.Location = new System.Drawing.Point(13, 140);
-            this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(250, 25);
-            this.HelpButton.TabIndex = 2;
-            this.HelpButton.Text = "Правила";
-            this.HelpButton.UseVisualStyleBackColor = true;
-            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
-            // 
-            // MainMenu_Form
+            // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.HelpButton);
-            this.Controls.Add(this.SettingsButton);
-            this.Controls.Add(this.NewGameButton);
-            this.Name = "MainMenu_Form";
+            this.Controls.Add(this.ruleButton);
+            this.Controls.Add(this.newGameButton);
+            this.Name = "MainMenuForm";
             this.Text = "Главное меню";
             this.ResumeLayout(false);
 
@@ -78,8 +71,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button NewGameButton;
-        private System.Windows.Forms.Button SettingsButton;
-        private System.Windows.Forms.Button HelpButton;
+        /// <summary>
+        /// Button that allows to start new game
+        /// </summary>
+        private System.Windows.Forms.Button newGameButton;
+
+        /// <summary>
+        /// Button that allows to read game rules
+        /// </summary>
+        private System.Windows.Forms.Button ruleButton;
     }
 }

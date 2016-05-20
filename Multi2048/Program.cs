@@ -27,7 +27,7 @@ namespace Multi2048
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu_Form());
+            Application.Run(new MainMenuForm());
         }
     }
 }

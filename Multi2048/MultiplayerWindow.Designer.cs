@@ -1,6 +1,9 @@
 ﻿namespace Multi2048
 {
-    partial class MultiplayerWindow
+    /// <summary>
+    /// Multiplayer window
+    /// </summary>
+    public partial class MultiplayerWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -13,10 +16,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -28,22 +32,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.StartLocal = new System.Windows.Forms.Button();
-            this.StartOnLine = new System.Windows.Forms.Button();
+            this.startLocal = new System.Windows.Forms.Button();
+            this.startOnLine = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // StartLocal
+            // startLocal
             // 
-            this.StartLocal.Location = new System.Drawing.Point(12, 90);
-            this.StartLocal.Name = "StartLocal";
-            this.StartLocal.Size = new System.Drawing.Size(250, 25);
-            this.StartLocal.TabIndex = 0;
-            this.StartLocal.Text = "За одним компьютером";
-            this.StartLocal.UseVisualStyleBackColor = true;
-            this.StartLocal.Click += new System.EventHandler(this.StartLocal_Click);
+            this.startLocal.Location = new System.Drawing.Point(12, 90);
+            this.startLocal.Name = "startLocal";
+            this.startLocal.Size = new System.Drawing.Size(250, 25);
+            this.startLocal.TabIndex = 0;
+            this.startLocal.Text = "За одним компьютером";
+            this.startLocal.UseVisualStyleBackColor = true;
+            this.startLocal.Click += new System.EventHandler(this.StartLocal_Click);
             // 
-            // StartOnLine
+            // startOnLine
             // 
+<<<<<<< HEAD
             this.StartOnLine.Location = new System.Drawing.Point(12, 140);
             this.StartOnLine.Name = "StartOnLine";
             this.StartOnLine.Size = new System.Drawing.Size(250, 25);
@@ -51,14 +56,23 @@
             this.StartOnLine.Text = "По сети (недоступно в бете)";
             this.StartOnLine.UseVisualStyleBackColor = true;
             this.StartOnLine.Click += new System.EventHandler(this.StartOnLine_Click);
+=======
+            this.startOnLine.Location = new System.Drawing.Point(12, 140);
+            this.startOnLine.Name = "startOnLine";
+            this.startOnLine.Size = new System.Drawing.Size(250, 25);
+            this.startOnLine.TabIndex = 1;
+            this.startOnLine.Text = "По сети";
+            this.startOnLine.UseVisualStyleBackColor = true;
+            this.startOnLine.Click += new System.EventHandler(this.StartOnLine_Click);
+>>>>>>> origin/Development
             // 
             // MultiplayerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.StartOnLine);
-            this.Controls.Add(this.StartLocal);
+            this.Controls.Add(this.startOnLine);
+            this.Controls.Add(this.startLocal);
             this.Name = "MultiplayerWindow";
             this.Text = "Мультиплеер";
             this.ResumeLayout(false);
@@ -67,7 +81,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button StartLocal;
-        private System.Windows.Forms.Button StartOnLine;
+        /// <summary>
+        /// Button that allows to start single PC mode
+        /// </summary>
+        private System.Windows.Forms.Button startLocal;
+
+        /// <summary>
+        /// Button that allows to start multiplayer mode
+        /// </summary>
+        private System.Windows.Forms.Button startOnLine;
     }
 }

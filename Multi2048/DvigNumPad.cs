@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="DvigWASD.cs" company="IVT-131">
+// <copyright file="DvigNumPad.cs" company="IVT-131">
 // Copyright (c) IVT-131. All rights reserved.
 // </copyright>
 // <author>Лобачев Андрей</author>
@@ -16,7 +16,7 @@ namespace Multi2048
     using System.Windows.Forms;
 
     /// <summary>
-    /// Engine control from num keyboard 
+    /// Engine control for player 2 controls
     /// </summary>
     public class DvigNumPad : Motion
     {
