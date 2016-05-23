@@ -43,9 +43,11 @@ namespace Multi2048
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string localhost = textBox1.Text;
+            int number = Convert.ToInt32(textBox2.Text);
+            
             TcpClient serverSocket;
-            serverSocket = new TcpClient("localhost", 65125);
+            serverSocket = new TcpClient(localhost, number);
             new SocketUniversal(serverSocket.GetStream());
  
 

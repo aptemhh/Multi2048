@@ -91,6 +91,14 @@ namespace Multi2048
                     short x;
                     Int16.TryParse(str[1],out x);
                 }
+                if (sr.Equals("stat"))
+                {
+                    s = s.Substring(4);
+                    str = s.Split(';');
+                    Char a = str[0][0];
+                    short x;
+                    Int16.TryParse(str[1], out x);
+                }
                 if (this.statusGame != null)
                 {
                     this.statusGame("статус");
@@ -111,7 +119,7 @@ namespace Multi2048
         /// <param name="s">Message to the socket</param>
         public void Write(string s)
         {
-           // socket.Write(Encoding.UTF8.GetBytes(s));
+                socket.Write(Encoding.UTF8.GetBytes(s), 0, Encoding.UTF8.GetBytes(s).Length);
         }
 
         public SocketUniversal(NetworkStream _socket)
